@@ -188,13 +188,23 @@ class StyleTransferwithCNN(Photon):
         from PIL import Image
         # Prepare content, stlye images
 
-        # content_image = np.asarray(Image.open(io.BytesIO(urlopen(content_image_url).read())))
-        # style_image = np.asarray(Image.open(io.BytesIO(urlopen(style_image_url).read())))
+        # 因为"Failed to save photon: cannot pickle 'LazyLoader' object", 换一种图片读取方式
+        content_image = np.asarray(Image.open(io.BytesIO(urlopen(content_image_url).read())))
+        style_image = np.asarray(Image.open(io.BytesIO(urlopen(style_image_url).read())))
 
+        # 将 NumPy 数组转换为 PIL 图像对象
+        pil_content_image = Image.fromarray(content_image)
+        pil_style_image = Image.fromarray(style_image)
 
-        path = os.path.abspath(os.getcwd())  # 绝对路径
-        content_image_path = keras.utils.get_file(path + '\dataset\paris.jpg', content_image_url)  # 下载图片 保存
-        style_image_path = keras.utils.get_file(path + '\dataset\starry_night.jpg', style_image_url)
+        # 保存图像
+        content_image_path = "content_image.jpg"
+        style_image_path = "style_image.jpg"
+        pil_content_image.save(content_image_path)
+        pil_style_image.save(style_image_path)
+
+        # path = os.path.abspath(os.getcwd())  # 绝对路径
+        # content_image_path = keras.utils.get_file(path + '\dataset\paris.jpg', content_image_url)  # 下载图片 保存
+        # style_image_path = keras.utils.get_file(path + '\dataset\starry_night.jpg', style_image_url)
         # content_image_path = keras.utils.get_file(path + '\dataset\paris.jpg', 'https://i.imgur.com/F28w3Ac.jpg')  # 下载图片 保存
         # style_image_path = keras.utils.get_file(path + '\dataset\starry_night.jpg', 'https://i.imgur.com/9ooB60I.jpg')
         result_height, result_width = get_result_image_size(content_image_path, RESIZE_HEIGHT)  # 将图像调整为目标高度
