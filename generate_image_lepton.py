@@ -58,7 +58,6 @@ class Canny(Photon):
     @Photon.handler("run")
     def run(self, url: str, style_url: str) -> PNGResponse:
         # 读取图像数据
-        import cv2
         import numpy as np
         from PIL import Image
 
