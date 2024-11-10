@@ -238,13 +238,13 @@ class Canny(Photon):
         # import numpy as np
         from PIL import Image
         #
-        # image = np.asarray(Image.open(io.BytesIO(urlopen(url).read())))
+        image = Image.open(io.BytesIO(urlopen(content_url).read()))
         #
         # # 进行边缘检测
         # edges = cv2.Canny(image, 100, 200)
 
-        edges = style_transfer(content_url, style_url)
-        edges = Image.fromarray(edges)
+        # edges = style_transfer(content_url, style_url)
+        edges = Image.fromarray(image)
 
         img_io = BytesIO()
         edges.save(img_io, format="PNG", quality="keep")
