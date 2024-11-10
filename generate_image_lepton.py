@@ -242,7 +242,7 @@ class Canny(Photon):
         # # 进行边缘检测
         # edges = cv2.Canny(image, 100, 200)
 
-        edges = style_transfer(content_url, style_url)
+        edges = np.asarray(style_transfer(content_url, style_url))
         edges = Image.fromarray(edges)
 
         img_io = BytesIO()
