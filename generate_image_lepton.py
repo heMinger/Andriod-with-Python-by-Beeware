@@ -65,11 +65,16 @@ class Canny(Photon):
         # image = np.asarray(Image.open(io.BytesIO(urlopen(url).read())))
         image = Image.open(io.BytesIO(urlopen(url).read()))
 
+        # 将Image JpegImageFile 转换为字节对象
+        img_byte_arr = io.BytesIO()
+        image.save(img_byte_arr, format='JPEG')
+        img_bytes = img_byte_arr.getvalue()
+
         # # 进行边缘检测
         # edges = cv2.Canny(image, 100, 200)
 
         # edges = Image.fromarray(edges)
-        edges = Image.fromarray(image)
+        edges = Image.fromarray(img_bytes)
 
         img_io = BytesIO()
         edges.save(img_io, format="PNG", quality="keep")
