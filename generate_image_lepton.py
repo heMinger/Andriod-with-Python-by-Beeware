@@ -51,7 +51,6 @@ class Canny(Photon):
     requirement_dependency = [
         "numpy",
         "Pillow",
-        "httpx==0.27.2",
         "tensorflow"
     ]
 
