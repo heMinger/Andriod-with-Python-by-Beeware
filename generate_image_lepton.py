@@ -173,7 +173,7 @@ class Canny(Photon):
 
         # if __name__ == "__main__":
         def style_transfer(content_image, style_image):
-            return "generated_image.jpg"
+            # return "generated_image.jpg"
 
             # Prepare content, stlye images
             path = os.path.abspath(os.getcwd())  # 绝对路径
