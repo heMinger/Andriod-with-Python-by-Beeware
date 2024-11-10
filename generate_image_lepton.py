@@ -244,9 +244,9 @@ class Canny(Photon):
         # edges = cv2.Canny(image, 100, 200)
 
         # edges = style_transfer(content_url, style_url)
-        edges = Image.fromarray(image)
+        # edges = Image.fromarray(image)
 
         img_io = BytesIO()
-        edges.save(img_io, format="PNG", quality="keep")
+        image.save(img_io, format="PNG", quality="keep")
         img_io.seek(0)
         return PNGResponse(img_io)
