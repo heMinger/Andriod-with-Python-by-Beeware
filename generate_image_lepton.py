@@ -173,14 +173,15 @@ class Canny(Photon):
 
         # if __name__ == "__main__":
         def style_transfer(content_image, style_image):
-            # return "generated_image.jpg"
+            image = Image.open(io.BytesIO(urlopen(content_image).read()))
+            return image
 
             # Prepare content, stlye images
             path = os.path.abspath(os.getcwd())  # 绝对路径
             content_image_path = keras.utils.get_file(path + '\dataset\paris.jpg',
-                                                      content_url)  # 下载图片 保存
+                                                      content_image)  # 下载图片 保存
             style_image_path = keras.utils.get_file(path + '\dataset\starry_night.jpg',
-                                                    style_url)
+                                                    style_image)
             # content_image_path = keras.utils.get_file(path + '\dataset\paris.jpg',
             #                                           'https://i.imgur.com/F28w3Ac.jpg')  # 下载图片 保存
             # style_image_path = keras.utils.get_file(path + '\dataset\starry_night.jpg',
@@ -242,7 +243,7 @@ class Canny(Photon):
         # # 进行边缘检测
         # edges = cv2.Canny(image, 100, 200)
 
-        edges = np.asarray(style_transfer(content_url, style_url))
+        edges = style_transfer(content_url, style_url)
         edges = Image.fromarray(edges)
 
         img_io = BytesIO()
