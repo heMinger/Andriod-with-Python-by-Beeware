@@ -51,7 +51,6 @@ class Canny(Photon):
     requirement_dependency = [
         "numpy",
         "Pillow",
-        "tensorflow"
     ]
 
     # 用这个装饰器表示这个一个对外接口
