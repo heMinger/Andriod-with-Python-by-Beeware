@@ -49,9 +49,10 @@ class Canny(Photon):
 
     # 这里的依赖 Package 会在创建 Photon 时自动安装
     requirement_dependency = [
-        "opencv-python",
         "numpy",
         "Pillow",
+        "httpx==0.27.2",
+        "tensorflow"
     ]
 
     # 用这个装饰器表示这个一个对外接口
