@@ -56,7 +56,7 @@ class Canny(Photon):
 
     # 用这个装饰器表示这个一个对外接口
     @Photon.handler("run")
-    def run(self, url: str) -> PNGResponse:
+    def run(self, url: str, style_url: str) -> PNGResponse:
         # 读取图像数据
         import cv2
         import numpy as np
