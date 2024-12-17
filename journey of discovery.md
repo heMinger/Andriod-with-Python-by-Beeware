@@ -11,7 +11,7 @@ Beeware is the tool that I solved all the problems for my needs and ended up usi
 2. The first time you build your project, i.e. the first time you run the code <code>briefcase build android</code>, it might takes some time. It usually takes 10 minutes. Worse, it can get stuck. I got stuck with a gradle file, which I solved by manually downloading the zip form the given link and putting it into the specific path.
 - You might get an error like "zip END header not found", which may be caused by an incomplete file, or you can manually download the file  and put it into the specific path.
 3. What should you do?
-- Your app logic should complish in the file <code>\src\yourProjectName\resources\app.py</de>.
+- Your app logic should be completed in the file <code>\src\yourProjectName\resources\app.py</de>.
 - If you use the third party, you should add it into the file <code>pyproject.toml</code>. 下面是例子
 ```
 requires=[
